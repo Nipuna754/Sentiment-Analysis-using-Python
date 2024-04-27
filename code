@@ -1,0 +1,36 @@
+def sentiment_analysis(text):
+  """
+  Analyzes the sentiment of a given text string.
+
+  Args:
+    text: The string to analyze.
+
+  Returns:
+    "positive" if the text contains more positive keywords,
+    "negative" if the text contains more negative keywords,
+    or "neutral" if the counts are equal.
+  """
+
+  positive_keywords = ["happy", "joyful", "pleased", "excited"]
+  negative_keywords = ["sad", "angry", "upset", "depressed"]
+
+  positive_count = 0
+  negative_count = 0
+
+  for word in text.split():
+    if word in positive_keywords:
+      positive_count += 1
+    elif word in negative_keywords:
+      negative_count += 1
+
+  if positive_count > negative_count:
+    return "positive"
+  elif negative_count > positive_count:
+    return "negative"
+  else:
+    return "neutral"
+
+# Example usage
+text = "I am feeling okay today."
+sentiment = sentiment_analysis(text)
+print(sentiment)  # Output: "neutral"
